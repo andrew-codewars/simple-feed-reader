@@ -45,7 +45,7 @@ jobs:
 
     environment:
       name: PRE-PROD
-      url: ${( steps.deploywebapp.outputs.ghl03webapp23604-staging.azurewebsites.net  }}
+      url: ${{ steps.deploywebapp.outputs.webapp-url }}
 
     steps:
     - name: Download a Build Artifact
@@ -63,7 +63,7 @@ jobs:
       id: deploywebapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ env.ghl03webapp23604-staging }}
+        app-name: ${{ env.app-name }}
         slot-name: staging
         package: website
 
